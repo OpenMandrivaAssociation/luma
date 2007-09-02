@@ -1,7 +1,7 @@
 %define name	luma
 %define version 2.4
 %define prerelease pre2
-%define rel 2
+%define rel 3
 %define release %mkrel 1.pre2.%rel
 
 Name: 	 	%{name}
@@ -40,18 +40,6 @@ mkdir -p $RPM_BUILD_ROOT%{_prefix}
 rm -f %{buildroot}%{_bindir}/luma
 ln -s %{_prefix}/lib/luma/luma.py %{buildroot}%{_bindir}/luma
 
-#menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): command="%{name}" \
-icon="%{name}.png" \
-needs="x11" \
-title="Luma" \
-longtitle="LDAP browser, utility and more" \
-section="System/Configuration/Other" \
-xdg="true"
-EOF
-
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
@@ -61,7 +49,7 @@ Exec=%{_bindir}/%{name}
 Icon=%{name}
 Terminal=false
 Type=Application
-Categories=Qt;X-MandrivaLinux-System-Configuration-Other;
+Categories=Qt;System;
 EOF
 
 mkdir -p %{buildroot}/{%{_iconsdir},%{_liconsdir},%{_miconsdir}}
@@ -81,7 +69,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %{_bindir}/%name
-%{_menudir}/%name
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_prefix}/lib/%name
 %{_datadir}/luma
@@ -90,6 +77,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_miconsdir}/%{name}.png
 %_mandir/man1/*
 %doc README
-
-
-
