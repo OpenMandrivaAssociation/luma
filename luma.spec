@@ -12,7 +12,6 @@ Source:		http://prdownloads.sourceforge.net/luma/%{name}-%{version}%{prerelease}
 URL:		http://luma.sourceforge.net/
 License:	GPL
 Group:		System/Configuration/Other
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 Requires:	PyQt >= 3.7 , python-ldap >= 2.0.1
 Requires:	python-sip
 Requires:   py-smbpasswd
