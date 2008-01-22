@@ -1,7 +1,7 @@
 %define name	luma
 %define version 2.4
 %define prerelease pre2
-%define rel 3
+%define rel 4
 %define release %mkrel 1.pre2.%rel
 
 Name: 	 	%{name}
@@ -10,6 +10,7 @@ Version: 	%{version}
 Release: 	%{release}
 Source:		http://prdownloads.sourceforge.net/luma/%{name}-%{version}%{prerelease}.tar.bz2
 URL:		http://luma.sourceforge.net/
+Patch:		luma-2.4pre2-savedialog.patch
 License:	GPL
 Group:		System/Configuration/Other
 BuildRoot:	%{_tmppath}/%{name}-buildroot
@@ -28,6 +29,7 @@ are delivered.
 
 %prep
 %setup -q -n %{name}-%{version}%{prerelease}
+%patch -p 1 -b .savedialog
 
 #%build
 #
