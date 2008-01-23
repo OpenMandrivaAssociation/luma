@@ -1,7 +1,7 @@
 %define name	luma
 %define version 2.4
 %define prerelease pre2
-%define rel 4
+%define rel 5
 %define release %mkrel 1.pre2.%rel
 
 Name: 	 	%{name}
