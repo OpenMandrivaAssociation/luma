@@ -1,22 +1,21 @@
 %define name	luma
 %define version 2.4
-%define prerelease pre2
-%define rel 5
-%define release %mkrel 1.pre2.%rel
+%define rel 1
+%define release %mkrel %rel
 
-Name: 	 	%{name}
-Summary: 	LDAP browser, utility and more
-Version: 	%{version}
-Release: 	%{release}
-Source:		http://prdownloads.sourceforge.net/luma/%{name}-%{version}%{prerelease}.tar.bz2
+Name:		%{name}
+Summary:	LDAP browser, utility and more
+Version:	%{version}
+Release:	%{release}
+Epoch:		1
+Source:		http://prdownloads.sourceforge.net/luma/%{name}-%{version}.tar.bz2
 URL:		http://luma.sourceforge.net/
-Patch:		luma-2.4pre2-savedialog.patch
 License:	GPL
 Group:		System/Configuration/Other
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 Requires:	PyQt >= 3.7 , python-ldap >= 2.0.1
 Requires:	python-sip
-Requires:   py-smbpasswd
+Requires:       py-smbpasswd
 %py_requires
 BuildArch:	noarch
 
@@ -28,8 +27,7 @@ widgets with LDAP-functionality for easy creation of plugins
 are delivered.
 
 %prep
-%setup -q -n %{name}-%{version}%{prerelease}
-%patch -p 1 -b .savedialog
+%setup -q
 
 #%build
 #
