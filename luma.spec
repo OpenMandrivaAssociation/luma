@@ -1,17 +1,18 @@
 Name:		luma
 Summary:	LDAP browser, utility and more
-Version:	2.4
-Release:	5
+
+Version:	3.0.7
+Release:	1
 Epoch:		1
-Source:		http://prdownloads.sourceforge.net/luma/%{name}-%{version}.tar.bz2
+Source0:	%{name}-%{version}.tar.gz
 URL:		http://luma.sourceforge.net/
 License:	GPL
 Group:		System/Configuration/Other
-Requires:	PyQt >= 3.7
-Requires:	python-ldap >= 2.0.1
+Requires:	python-qt4 >= 4.8
+Requires:	python-ldap >= 2.3
 Requires:	python-sip
 Requires:	py-smbpasswd
-%py_requires
+BuildRequires:  python-devel
 BuildArch:	noarch
 
 %description
@@ -25,42 +26,18 @@ are delivered.
 %setup -q
 
 %build
-# nothing
+python setup.py build
 
 %install
-mkdir -p %{buildroot}%{_prefix}
-./install.py --prefix=%{buildroot}%{_prefix}
-
-# fix symlink, we need DESTDIR support for install.py
-rm -f %{buildroot}%{_bindir}/luma
-ln -s %{_prefix}/lib/luma/luma.py %{buildroot}%{_bindir}/luma
-
-mkdir -p %{buildroot}%{_datadir}/applications
-cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
-[Desktop Entry]
-Name=Luma
-Comment=LDAP browser, utility and more
-Exec=%{_bindir}/%{name}
-Icon=%{name}
-Terminal=false
-Type=Application
-Categories=Qt;System;
-EOF
-
-mkdir -p %{buildroot}/{%{_iconsdir},%{_liconsdir},%{_miconsdir}}
-ln -s %{_datadir}/%{name}/icons/luma-16.png %{buildroot}/%{_miconsdir}/%{name}.png
-ln -s %{_datadir}/%{name}/icons/luma-32.png %{buildroot}/%{_iconsdir}/%{name}.png
-ln -s %{_datadir}/%{name}/icons/luma-48.png %{buildroot}/%{_liconsdir}/%{name}.png
+python setup.py install --root=%{buildroot}
 
 %files
-%{_bindir}/%name
-%{_datadir}/applications/mandriva-%{name}.desktop
-%{_prefix}/lib/%name
-%{_datadir}/luma
-%{_iconsdir}/%{name}.png
-%{_liconsdir}/%{name}.png
-%{_miconsdir}/%{name}.png
+%doc AUTHORS ChangeLog COPYING README
+%{_bindir}/%{name}
+%{py_puresitedir}/%{name}
+%{py_puresitedir}/%{name}-%{version}-py*.egg-info
+%{_iconsdir}/hicolor/scalable/apps/%{name}.svg
+%{_iconsdir}/hicolor/*/apps/%{name}.png
+%{_datadir}/pixmaps/%{name}.svg
+%{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/*
-%doc README
-
-
