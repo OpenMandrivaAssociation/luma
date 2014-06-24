@@ -1,8 +1,7 @@
 Name:		luma
 Summary:	LDAP browser, utility and more
-
 Version:	3.0.7
-Release:	1
+Release:	2
 Epoch:		1
 Source0:	%{name}-%{version}.tar.gz
 URL:		http://luma.sourceforge.net/
@@ -10,9 +9,10 @@ License:	GPL
 Group:		System/Configuration/Other
 Requires:	python-qt4 >= 4.8
 Requires:	python-ldap >= 2.3
-Requires:	python-sip
+Requires:	sip-api(%{sip_api_major}) = %{sip_api}
 Requires:	py-smbpasswd
 BuildRequires:  python-devel
+BuildRequires:  python-sip
 BuildArch:	noarch
 
 %description
