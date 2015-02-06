@@ -1,7 +1,7 @@
 Name:		luma
 Summary:	LDAP browser, utility and more
 Version:	3.0.7
-Release:	2
+Release:	3
 Epoch:		1
 Source0:	%{name}-%{version}.tar.gz
 URL:		http://luma.sourceforge.net/
