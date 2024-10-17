@@ -4,7 +4,7 @@ Version:	3.0.7
 Release:	3
 Epoch:		1
 Source0:	%{name}-%{version}.tar.gz
-URL:		http://luma.sourceforge.net/
+URL:		https://luma.sourceforge.net/
 License:	GPL
 Group:		System/Configuration/Other
 Requires:	python-qt4 >= 4.8
